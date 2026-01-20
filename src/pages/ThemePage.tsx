@@ -6,6 +6,7 @@ import { NavLink, Navigate, Route, Routes } from 'react-router'
 import { Button } from '@/components/ui/button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/toast'
 
 // Dashboard Components
 import { CalorieProgressRing } from '@/components/dashboard/CalorieProgressRing'
@@ -37,8 +38,58 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 }
 
 function UIComponentsPage() {
+  const { addToast } = useToast()
+
   return (
     <div className="space-y-8">
+      <Section title="Toast">
+        <p className="text-text-secondary text-sm mb-4">
+          Click buttons to trigger different toast variants. Toasts auto-dismiss after 5 seconds. Hover to pause the timer.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Button
+            variant="primary"
+            onClick={() => addToast({
+              variant: 'success',
+              title: 'Workout saved!',
+              description: 'Your workout has been logged successfully.',
+            })}
+          >
+            Success Toast
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => addToast({
+              variant: 'error',
+              title: 'Failed to save',
+              description: 'Please check your connection and try again.',
+            })}
+          >
+            Error Toast
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => addToast({
+              variant: 'info',
+              title: 'Pro tip',
+              description: 'Swipe left on exercises to delete them.',
+            })}
+          >
+            Info Toast
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={() => addToast({
+              variant: 'warning',
+              title: 'Unsaved changes',
+              description: 'You have unsaved changes that will be lost.',
+            })}
+          >
+            Warning Toast
+          </Button>
+        </div>
+      </Section>
+
       <Section title="Button">
         <div className="flex flex-wrap gap-3">
           <Button variant="primary">Primary</Button>
@@ -92,10 +143,8 @@ function DashboardComponentsPage() {
   return (
     <div className="space-y-8">
       <Section title="CalorieProgressRing">
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-4 gap-3">
           <CalorieProgressRing consumed={1850} target={2200} />
-        </div>
-        <div className="flex justify-center mt-4">
           <CalorieProgressRing consumed={2500} target={2200} />
         </div>
       </Section>
@@ -104,7 +153,7 @@ function DashboardComponentsPage() {
         <div className="space-y-4 max-w-md">
           <MacroProgressBar label="Protein" current={120} target={150} color="protein" />
           <MacroProgressBar label="Carbs" current={200} target={250} color="carbs" />
-          <MacroProgressBar label="Fat" current={70} target={60} color="fat" />
+          <MacroProgressBar label="Fat" current={0} target={60} color="fat" />
         </div>
       </Section>
 
