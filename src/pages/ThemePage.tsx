@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router'
 
 // UI Components
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { Input } from '@/components/ui/input'
@@ -131,6 +132,15 @@ function UIComponentsPage() {
             <h3 className="font-semibold mb-2">Selected</h3>
             <p className="text-text-secondary text-sm">Selected variant with glow effect</p>
           </GlassCard>
+        </div>
+      </Section>
+
+      <Section title="Badge">
+        <div className="flex flex-wrap gap-3">
+          <Badge>Default</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="ghost">Ghost</Badge>
+          <Badge variant="danger">Danger</Badge>
         </div>
       </Section>
     </div>
