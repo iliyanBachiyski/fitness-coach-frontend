@@ -1,4 +1,4 @@
-import { Package, Search } from 'lucide-react'
+import { ArrowUpRight, BadgeCheck, Bookmark, Loader2, Package, Search } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router'
 
@@ -49,7 +49,6 @@ function UIComponentsPage() {
         </p>
         <div className="flex flex-wrap gap-3">
           <Button
-            variant="primary"
             onClick={() => addToast({
               variant: 'success',
               title: 'Workout saved!',
@@ -59,7 +58,7 @@ function UIComponentsPage() {
             Success Toast
           </Button>
           <Button
-            variant="danger"
+            variant="destructive"
             onClick={() => addToast({
               variant: 'error',
               title: 'Failed to save',
@@ -91,12 +90,14 @@ function UIComponentsPage() {
         </div>
       </Section>
 
-      <Section title="Button">
+      <Section title="Button (shadcn)">
         <div className="flex flex-wrap gap-3">
-          <Button variant="primary">Primary</Button>
+          <Button>Default</Button>
+          <Button variant="outline">Outline</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="ghost">Ghost</Button>
-          <Button variant="danger">Danger</Button>
+          <Button variant="destructive">Destructive</Button>
+          <Button variant="link">Link</Button>
         </div>
         <div className="flex flex-wrap gap-3">
           <Button size="sm">Small</Button>
@@ -136,11 +137,51 @@ function UIComponentsPage() {
       </Section>
 
       <Section title="Badge">
-        <div className="flex flex-wrap gap-3">
+        <p className="text-text-secondary text-sm mb-2">Variants</p>
+        <div className="flex flex-wrap gap-3 mb-4">
           <Badge>Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
           <Badge variant="ghost">Ghost</Badge>
-          <Badge variant="danger">Danger</Badge>
+          <Badge variant="destructive">Destructive</Badge>
+          <Badge variant="outline">Outline</Badge>
+          <Badge variant="link">Link</Badge>
+        </div>
+        <p className="text-text-secondary text-sm mb-2">With Icon</p>
+        <div className="flex flex-wrap gap-3 mb-4">
+          <Badge variant="secondary">
+            <BadgeCheck className="size-3" />
+            Verified
+          </Badge>
+          <Badge variant="outline">
+            Bookmark
+            <Bookmark className="size-3" />
+          </Badge>
+        </div>
+        <p className="text-text-secondary text-sm mb-2">With Spinner</p>
+        <div className="flex flex-wrap gap-3 mb-4">
+          <Badge variant="destructive">
+            <Loader2 className="size-3 animate-spin" />
+            Deleting
+          </Badge>
+          <Badge variant="secondary">
+            Generating
+            <Loader2 className="size-3 animate-spin" />
+          </Badge>
+        </div>
+        <p className="text-text-secondary text-sm mb-2">As Link</p>
+        <div className="flex flex-wrap gap-3">
+          <Badge asChild>
+            <a href="#link">
+              Open Link
+              <ArrowUpRight className="size-3" />
+            </a>
+          </Badge>
+          <Badge variant="secondary" asChild>
+            <a href="#docs">
+              Documentation
+              <ArrowUpRight className="size-3" />
+            </a>
+          </Badge>
         </div>
       </Section>
     </div>

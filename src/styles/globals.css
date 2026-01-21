@@ -67,8 +67,13 @@
   --animate-progress-fill: progressFill 1s ease-out forwards;
 
   @keyframes progressFill {
-    0% { stroke-dashoffset: 100; }
-    100% { stroke-dashoffset: 0; }
+    0% {
+      stroke-dashoffset: 100;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+    }
   }
 }
 
@@ -111,10 +116,21 @@
     line-height: var(--text-caption--line-height);
     font-weight: var(--text-caption--font-weight);
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role="button"]:disabled {
+    cursor: not-allowed;
+  }
 }
 
 /* ===== COMPONENT STYLES ===== */
 @layer components {
+
   /* Glassmorphism Card */
   .glass-card {
     border-radius: var(--radius-card);
@@ -133,9 +149,11 @@
     padding: 0.75rem 1.5rem;
     transition: background-color 0.2s;
   }
+
   .btn-primary:hover {
     background-color: var(--color-primary-hover);
   }
+
   .btn-primary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -150,9 +168,11 @@
     padding: 0.75rem 1.5rem;
     transition: background-color 0.2s;
   }
+
   .btn-secondary:hover {
     background-color: rgba(0, 230, 118, 0.1);
   }
+
   .btn-secondary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -166,10 +186,12 @@
     padding: 0.75rem 1.5rem;
     transition: color 0.2s, background-color 0.2s;
   }
+
   .btn-ghost:hover {
     color: var(--color-text-primary);
     background-color: var(--color-surface);
   }
+
   .btn-ghost:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -184,9 +206,11 @@
     padding: 0.75rem 1.5rem;
     transition: background-color 0.2s;
   }
+
   .btn-danger:hover {
     background-color: rgba(255, 61, 0, 0.9);
   }
+
   .btn-danger:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -203,9 +227,11 @@
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
+
   .input-field::placeholder {
     color: rgba(176, 190, 197, 0.5);
   }
+
   .input-field:focus {
     border-color: var(--color-secondary);
     box-shadow: 0 0 0 1px var(--color-secondary);
@@ -215,6 +241,7 @@
   .input-field-error {
     border-color: var(--color-warning);
   }
+
   .input-field-error:focus {
     border-color: var(--color-warning);
     box-shadow: 0 0 0 1px var(--color-warning);
@@ -224,6 +251,7 @@
   .input-field-success {
     border-color: var(--color-primary);
   }
+
   .input-field-success:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 1px var(--color-primary);
@@ -236,6 +264,7 @@
     box-shadow: var(--shadow-card);
     transition: box-shadow 0.2s, background-color 0.2s;
   }
+
   .card-default:hover {
     box-shadow: var(--shadow-card-hover);
     background-color: var(--color-surface-hover);
@@ -301,6 +330,7 @@
     border: 1px solid rgba(176, 190, 197, 0.5);
     color: var(--color-text-secondary);
   }
+
   .chip-default:hover {
     border-color: var(--color-text-primary);
     color: var(--color-text-primary);
@@ -326,14 +356,17 @@
     width: 8px;
     height: 8px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background-color: var(--color-surface);
     border-radius: 9999px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background-color: rgba(176, 190, 197, 0.3);
     border-radius: 9999px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: rgba(176, 190, 197, 0.5);
   }
@@ -343,6 +376,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -350,6 +384,7 @@
 
 /* ===== UTILITY STYLES ===== */
 @layer utilities {
+
   /* Text gradient for special headings */
   .text-gradient-primary {
     background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
@@ -377,9 +412,12 @@
   }
 
   @keyframes borderPulse {
-    0%, 100% {
+
+    0%,
+    100% {
       border-color: rgba(41, 121, 255, 0.5);
     }
+
     50% {
       border-color: rgba(41, 121, 255, 1);
     }
