@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils/cn';
-import { Dumbbell, Sofa } from 'lucide-react';
+import { cn } from '@/lib/utils/cn'
+import { Dumbbell, Sofa } from 'lucide-react'
 
-type DayType = 'training' | 'rest';
+type DayType = 'training' | 'rest'
 
 interface DayTypeToggleProps {
-  value: DayType;
-  onChange: (value: DayType) => void;
+  value: DayType
+  onChange: (value: DayType) => void
 }
 
 export function DayTypeToggle({ value, onChange }: DayTypeToggleProps) {
@@ -36,5 +36,5 @@ export function DayTypeToggle({ value, onChange }: DayTypeToggleProps) {
         Rest Day
       </button>
     </div>
-  );
+  )
 }

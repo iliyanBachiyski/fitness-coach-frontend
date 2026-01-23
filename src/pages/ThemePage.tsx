@@ -1,13 +1,20 @@
-import { ArrowUpRight, BadgeCheck, Bookmark, Loader2, Package, Search } from 'lucide-react'
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Bookmark,
+  Loader2,
+  Package,
+  Search,
+} from 'lucide-react'
 import { useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router'
 
 // UI Components
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import Badge from '@/components/ui/badge'
+import Button from '@/components/ui/button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/toast'
+import { useToast } from '@/hooks/useToast'
 
 // Dashboard Components
 import { CalorieProgressRing } from '@/components/dashboard/CalorieProgressRing'
@@ -27,7 +34,13 @@ import { SetLoggerRow } from '@/components/workout-mode/SetLoggerRow'
 import { EmptyState } from '@/components/common/EmptyState'
 import { SkeletonCard } from '@/components/common/SkeletonCard'
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-semibold text-text-primary border-b border-white/10 pb-2">
@@ -45,45 +58,54 @@ function UIComponentsPage() {
     <div className="space-y-8">
       <Section title="Toast">
         <p className="text-text-secondary text-sm mb-4">
-          Click buttons to trigger different toast variants. Toasts auto-dismiss after 5 seconds. Hover to pause the timer.
+          Click buttons to trigger different toast variants. Toasts auto-dismiss
+          after 5 seconds. Hover to pause the timer.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button
-            onClick={() => addToast({
-              variant: 'success',
-              title: 'Workout saved!',
-              description: 'Your workout has been logged successfully.',
-            })}
+            onClick={() =>
+              addToast({
+                variant: 'success',
+                title: 'Workout saved!',
+                description: 'Your workout has been logged successfully.',
+              })
+            }
           >
             Success Toast
           </Button>
           <Button
             variant="destructive"
-            onClick={() => addToast({
-              variant: 'error',
-              title: 'Failed to save',
-              description: 'Please check your connection and try again.',
-            })}
+            onClick={() =>
+              addToast({
+                variant: 'error',
+                title: 'Failed to save',
+                description: 'Please check your connection and try again.',
+              })
+            }
           >
             Error Toast
           </Button>
           <Button
             variant="secondary"
-            onClick={() => addToast({
-              variant: 'info',
-              title: 'Pro tip',
-              description: 'Swipe left on exercises to delete them.',
-            })}
+            onClick={() =>
+              addToast({
+                variant: 'info',
+                title: 'Pro tip',
+                description: 'Swipe left on exercises to delete them.',
+              })
+            }
           >
             Info Toast
           </Button>
           <Button
             variant="ghost"
-            onClick={() => addToast({
-              variant: 'warning',
-              title: 'Unsaved changes',
-              description: 'You have unsaved changes that will be lost.',
-            })}
+            onClick={() =>
+              addToast({
+                variant: 'warning',
+                title: 'Unsaved changes',
+                description: 'You have unsaved changes that will be lost.',
+              })
+            }
           >
             Warning Toast
           </Button>
@@ -114,8 +136,16 @@ function UIComponentsPage() {
         <div className="space-y-4 max-w-md">
           <Input placeholder="Basic input" />
           <Input label="With Label" placeholder="Enter value..." />
-          <Input label="With Icon" placeholder="Search..." icon={<Search className="w-5 h-5" />} />
-          <Input label="With Error" placeholder="Invalid input" error="This field is required" />
+          <Input
+            label="With Icon"
+            placeholder="Search..."
+            icon={<Search className="w-5 h-5" />}
+          />
+          <Input
+            label="With Error"
+            placeholder="Invalid input"
+            error="This field is required"
+          />
         </div>
       </Section>
 
@@ -123,15 +153,21 @@ function UIComponentsPage() {
         <div className="grid gap-4 md:grid-cols-3">
           <GlassCard className="p-4">
             <h3 className="font-semibold mb-2">Default</h3>
-            <p className="text-text-secondary text-sm">Default glass card with hover effect</p>
+            <p className="text-text-secondary text-sm">
+              Default glass card with hover effect
+            </p>
           </GlassCard>
           <GlassCard variant="elevated" className="p-4">
             <h3 className="font-semibold mb-2">Elevated</h3>
-            <p className="text-text-secondary text-sm">Elevated variant with stronger shadow</p>
+            <p className="text-text-secondary text-sm">
+              Elevated variant with stronger shadow
+            </p>
           </GlassCard>
           <GlassCard variant="selected" className="p-4">
             <h3 className="font-semibold mb-2">Selected</h3>
-            <p className="text-text-secondary text-sm">Selected variant with glow effect</p>
+            <p className="text-text-secondary text-sm">
+              Selected variant with glow effect
+            </p>
           </GlassCard>
         </div>
       </Section>
@@ -202,8 +238,18 @@ function DashboardComponentsPage() {
 
       <Section title="MacroProgressBar">
         <div className="space-y-4 max-w-md">
-          <MacroProgressBar label="Protein" current={120} target={150} color="protein" />
-          <MacroProgressBar label="Carbs" current={200} target={250} color="carbs" />
+          <MacroProgressBar
+            label="Protein"
+            current={120}
+            target={150}
+            color="protein"
+          />
+          <MacroProgressBar
+            label="Carbs"
+            current={200}
+            target={250}
+            color="carbs"
+          />
           <MacroProgressBar label="Fat" current={0} target={60} color="fat" />
         </div>
       </Section>
@@ -212,8 +258,8 @@ function DashboardComponentsPage() {
         <HydrationTracker
           current={hydration}
           target={2500}
-          onIncrement={() => setHydration(h => h + 250)}
-          onDecrement={() => setHydration(h => Math.max(0, h - 250))}
+          onIncrement={() => setHydration((h) => h + 250)}
+          onDecrement={() => setHydration((h) => Math.max(0, h - 250))}
         />
       </Section>
 
@@ -225,7 +271,7 @@ function DashboardComponentsPage() {
             estimatedDuration={45}
             muscleGroups={['Chest', 'Shoulders', 'Triceps']}
             status="pending"
-            onStart={() => { }}
+            onStart={() => {}}
           />
           <WorkoutCard
             name="Pull Day"
@@ -233,7 +279,7 @@ function DashboardComponentsPage() {
             estimatedDuration={50}
             muscleGroups={['Back', 'Biceps']}
             status="in_progress"
-            onStart={() => { }}
+            onStart={() => {}}
           />
           <WorkoutCard
             name="Leg Day"
@@ -241,7 +287,7 @@ function DashboardComponentsPage() {
             estimatedDuration={55}
             muscleGroups={['Quads', 'Hamstrings', 'Glutes']}
             status="completed"
-            onStart={() => { }}
+            onStart={() => {}}
           />
         </div>
       </Section>
@@ -364,7 +410,7 @@ function CommonComponentsPage() {
           title="No Workouts Yet"
           description="Start your fitness journey by creating your first workout routine."
           actionLabel="Create Workout"
-          onAction={() => { }}
+          onAction={() => {}}
         />
       </Section>
     </div>
@@ -386,7 +432,9 @@ export function ThemePage() {
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl font-bold">Theme & Components</h1>
           <NavLink to="/home">
-            <Button variant="ghost" size="sm">Back to Home</Button>
+            <Button variant="ghost" size="sm">
+              Back to Home
+            </Button>
           </NavLink>
         </div>
         <nav className="flex gap-2 overflow-x-auto pb-2">
@@ -395,9 +443,10 @@ export function ThemePage() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap transition-colors ${isActive
-                  ? 'bg-primary text-background'
-                  : 'bg-surface text-text-secondary hover:text-text-primary'
+                `px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap transition-colors ${
+                  isActive
+                    ? 'bg-primary text-background'
+                    : 'bg-surface text-text-secondary hover:text-text-primary'
                 }`
               }
             >

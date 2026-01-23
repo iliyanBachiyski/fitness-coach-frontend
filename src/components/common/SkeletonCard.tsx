@@ -1,8 +1,8 @@
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/cn'
 
 interface SkeletonCardProps {
-  className?: string;
-  lines?: number;
+  className?: string
+  lines?: number
 }
 
 export function SkeletonCard({ className, lines = 3 }: SkeletonCardProps) {
@@ -19,5 +19,5 @@ export function SkeletonCard({ className, lines = 3 }: SkeletonCardProps) {
         />
       ))}
     </div>
-  );
+  )
 }

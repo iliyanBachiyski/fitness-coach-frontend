@@ -1,17 +1,17 @@
-import { Clock, Dumbbell, Play, CheckCircle } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
-import { GlassCard } from '@/components/ui/glass-card';
-import { Button } from '@/components/ui/button';
+import Button from '@/components/ui/button'
+import { GlassCard } from '@/components/ui/glass-card'
+import { cn } from '@/lib/utils/cn'
+import { CheckCircle, Clock, Dumbbell, Play } from 'lucide-react'
 
-type WorkoutStatus = 'pending' | 'in_progress' | 'completed';
+type WorkoutStatus = 'pending' | 'in_progress' | 'completed'
 
 interface WorkoutCardProps {
-  name: string;
-  exerciseCount: number;
-  estimatedDuration: number; // in minutes
-  muscleGroups: string[];
-  status: WorkoutStatus;
-  onStart: () => void;
+  name: string
+  exerciseCount: number
+  estimatedDuration: number // in minutes
+  muscleGroups: string[]
+  status: WorkoutStatus
+  onStart: () => void
 }
 
 export function WorkoutCard({
@@ -65,12 +65,12 @@ export function WorkoutCard({
         <Button
           onClick={onStart}
           className="w-full"
-          variant={status === 'in_progress' ? 'secondary' : 'primary'}
+          variant={status === 'in_progress' ? 'secondary' : 'default'}
         >
           <Play className="w-4 h-4 mr-2" />
           {status === 'in_progress' ? 'Continue Workout' : 'Start Workout'}
         </Button>
       )}
     </GlassCard>
-  );
+  )
 }

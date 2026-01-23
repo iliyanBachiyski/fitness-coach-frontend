@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router';
-import { Home, Calendar, Dumbbell, List, User } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
+import { NavLink } from 'react-router'
+import { Home, Calendar, Dumbbell, List, User } from 'lucide-react'
+import { cn } from '@/lib/utils/cn'
 
 const navItems = [
   { to: '/home', icon: Home, label: 'Home' },
@@ -8,12 +8,14 @@ const navItems = [
   { to: '/workouts', icon: Dumbbell, label: 'Workouts' },
   { to: '/exercises', icon: List, label: 'Exercises' },
   { to: '/profile', icon: User, label: 'Profile' },
-];
+]
 
 export function BottomNavigation() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-glass
-                    border-t border-white/10 safe-area-bottom">
+    <nav
+      className="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-glass
+                    border-t border-white/10 safe-area-bottom"
+    >
       <div className="flex justify-around items-center h-16">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
@@ -34,5 +36,5 @@ export function BottomNavigation() {
         ))}
       </div>
     </nav>
-  );
+  )
 }

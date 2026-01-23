@@ -1,10 +1,10 @@
-import { cn } from '@/lib/utils/cn';
-import { forwardRef } from 'react';
+import { cn } from '@/lib/utils/cn'
+import { forwardRef } from 'react'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  error?: string;
-  icon?: React.ReactNode;
+  label?: string
+  error?: string
+  icon?: React.ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -12,10 +12,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-1.5">
         {label && (
-          <label className={cn(
-            'text-sm font-medium',
-            error ? 'text-warning' : 'text-text-secondary'
-          )}>
+          <label
+            className={cn(
+              'text-sm font-medium',
+              error ? 'text-warning' : 'text-text-secondary'
+            )}
+          >
             {label}
           </label>
         )}
@@ -40,12 +42,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
         </div>
-        {error && (
-          <span className="text-sm text-warning">{error}</span>
-        )}
+        {error && <span className="text-sm text-warning">{error}</span>}
       </div>
-    );
+    )
   }
-);
+)
 
-Input.displayName = 'Input';
+Input.displayName = 'Input'

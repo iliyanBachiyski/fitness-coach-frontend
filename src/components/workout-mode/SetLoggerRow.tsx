@@ -1,16 +1,16 @@
-import { cn } from '@/lib/utils/cn';
-import { Check } from 'lucide-react';
+import { cn } from '@/lib/utils/cn'
+import { Check } from 'lucide-react'
 
 interface SetLoggerRowProps {
-  setNumber: number;
-  targetReps: string; // e.g., "8-12"
-  weight: number;
-  actualReps: number;
-  isActive: boolean;
-  isCompleted: boolean;
-  onWeightChange: (weight: number) => void;
-  onRepsChange: (reps: number) => void;
-  onComplete: () => void;
+  setNumber: number
+  targetReps: string // e.g., "8-12"
+  weight: number
+  actualReps: number
+  isActive: boolean
+  isCompleted: boolean
+  onWeightChange: (weight: number) => void
+  onRepsChange: (reps: number) => void
+  onComplete: () => void
 }
 
 export function SetLoggerRow({
@@ -32,7 +32,9 @@ export function SetLoggerRow({
         isCompleted && 'opacity-50'
       )}
     >
-      <span className="w-12 text-text-secondary font-medium">Set {setNumber}</span>
+      <span className="w-12 text-text-secondary font-medium">
+        Set {setNumber}
+      </span>
 
       <div className="flex-1 flex items-center gap-3">
         <div className="flex items-center gap-1">
@@ -79,5 +81,5 @@ export function SetLoggerRow({
         <Check className="w-5 h-5" />
       </button>
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { Droplets, Plus, Minus } from 'lucide-react';
+import { Droplets, Plus, Minus } from 'lucide-react'
 
 interface HydrationTrackerProps {
-  current: number; // in ml
-  target: number;  // in ml
-  onIncrement: () => void;
-  onDecrement: () => void;
+  current: number // in ml
+  target: number // in ml
+  onIncrement: () => void
+  onDecrement: () => void
 }
 
 export function HydrationTracker({
@@ -13,9 +13,9 @@ export function HydrationTracker({
   onIncrement,
   onDecrement,
 }: HydrationTrackerProps) {
-  const percentage = Math.min((current / target) * 100, 100);
-  const glasses = Math.floor(current / 250);
-  const targetGlasses = Math.floor(target / 250);
+  const percentage = Math.min((current / target) * 100, 100)
+  const glasses = Math.floor(current / 250)
+  const targetGlasses = Math.floor(target / 250)
 
   return (
     <div className="glass-card p-4">
@@ -58,5 +58,5 @@ export function HydrationTracker({
         </div>
       </div>
     </div>
-  );
+  )
 }
