@@ -1,18 +1,24 @@
-import { useMemo } from 'react';
-import { cn } from '@/lib/utils/cn';
+import { useMemo } from 'react'
+import { cn } from '@/lib/utils/cn'
 
 interface CalorieProgressRingProps {
-  consumed: number;
-  target: number;
+  consumed: number
+  target: number
 }
 
-export function CalorieProgressRing({ consumed, target }: CalorieProgressRingProps) {
-  const percentage = useMemo(() => Math.min((consumed / target) * 100, 100), [consumed, target]);
-  const isOverTarget = consumed > target;
-  const remaining = target - consumed;
+export function CalorieProgressRing({
+  consumed,
+  target,
+}: CalorieProgressRingProps) {
+  const percentage = useMemo(
+    () => Math.min((consumed / target) * 100, 100),
+    [consumed, target]
+  )
+  const isOverTarget = consumed > target
+  const remaining = target - consumed
 
-  const circumference = 2 * Math.PI * 45; // radius = 45
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  const circumference = 2 * Math.PI * 45 // radius = 45
+  const strokeDashoffset = circumference - (percentage / 100) * circumference
 
   return (
     <div className="relative flex items-center justify-center">
@@ -58,9 +64,11 @@ export function CalorieProgressRing({ consumed, target }: CalorieProgressRingPro
             isOverTarget ? 'text-warning' : 'text-primary'
           )}
         >
-          {isOverTarget ? `Over by ${Math.abs(remaining)}` : `${remaining} remaining`}
+          {isOverTarget
+            ? `Over by ${Math.abs(remaining)}`
+            : `${remaining} remaining`}
         </span>
       </div>
     </div>
-  );
+  )
 }

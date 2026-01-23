@@ -1,7 +1,7 @@
-import { Routes, Route, Navigate } from 'react-router'
-import { HomePage } from './pages/HomePage'
-import { ThemePage } from './pages/ThemePage'
-import { ToastProvider } from './components/ui/toast'
+import ToastProvider from '@/components/ui/toast'
+import { HomePage } from '@/pages/HomePage'
+import { ThemePage } from '@/pages/ThemePage'
+import { Navigate, Route, Routes } from 'react-router'
 
 function App() {
   return (

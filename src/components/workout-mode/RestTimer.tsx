@@ -1,41 +1,41 @@
-import { useState, useEffect } from 'react';
-import { Play, Pause, SkipForward } from 'lucide-react';
+import { useState, useEffect } from 'react'
+import { Play, Pause, SkipForward } from 'lucide-react'
 
 interface RestTimerProps {
-  duration: number; // in seconds
-  onComplete: () => void;
-  onSkip: () => void;
+  duration: number // in seconds
+  onComplete: () => void
+  onSkip: () => void
 }
 
 export function RestTimer({ duration, onComplete, onSkip }: RestTimerProps) {
-  const [timeLeft, setTimeLeft] = useState(duration);
-  const [isPaused, setIsPaused] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(duration)
+  const [isPaused, setIsPaused] = useState(false)
 
-  const percentage = (timeLeft / duration) * 100;
-  const circumference = 2 * Math.PI * 60;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  const percentage = (timeLeft / duration) * 100
+  const circumference = 2 * Math.PI * 60
+  const strokeDashoffset = circumference - (percentage / 100) * circumference
 
   useEffect(() => {
-    if (isPaused || timeLeft <= 0) return;
+    if (isPaused || timeLeft <= 0) return
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          onComplete();
-          return 0;
+          onComplete()
+          return 0
         }
-        return prev - 1;
-      });
-    }, 1000);
+        return prev - 1
+      })
+    }, 1000)
 
-    return () => clearInterval(timer);
-  }, [isPaused, timeLeft, onComplete]);
+    return () => clearInterval(timer)
+  }, [isPaused, timeLeft, onComplete])
 
   const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
 
   return (
     <div className="flex flex-col items-center gap-6">
@@ -94,5 +94,5 @@ export function RestTimer({ duration, onComplete, onSkip }: RestTimerProps) {
 
       <p className="text-text-secondary text-sm">Tap skip when ready</p>
     </div>
-  );
+  )
 }

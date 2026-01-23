@@ -1,32 +1,7 @@
-import { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { CheckCircle, XCircle, Info, AlertTriangle, X } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
-
-type ToastVariant = 'success' | 'error' | 'info' | 'warning';
-
-interface Toast {
-  id: string;
-  variant: ToastVariant;
-  title: string;
-  description?: string;
-  duration?: number;
-}
-
-interface ToastContextValue {
-  toasts: Toast[];
-  addToast: (toast: Omit<Toast, 'id'>) => void;
-  removeToast: (id: string) => void;
-}
-
-const ToastContext = createContext<ToastContextValue | null>(null);
-
-export function useToast() {
-  const context = useContext(ToastContext);
-  if (!context) {
-    throw new Error('useToast must be used within a ToastProvider');
-  }
-  return context;
-}
+import { cn } from '@/lib/utils/cn'
+import { ToastContext, type Toast } from '@/types/toast'
+import { AlertTriangle, CheckCircle, Info, X, XCircle } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 
 const variantConfig = {
   success: {
@@ -49,35 +24,41 @@ const variantConfig = {
     containerClass: 'bg-fat/10 border-fat',
     iconClass: 'text-fat',
   },
-};
+}
 
-function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) => void }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+function ToastItem({
+  toast,
+  onRemove,
+}: {
+  toast: Toast
+  onRemove: (id: string) => void
+}) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
 
-  const config = variantConfig[toast.variant];
-  const Icon = config.icon;
+  const config = variantConfig[toast.variant]
+  const Icon = config.icon
 
   useEffect(() => {
-    requestAnimationFrame(() => setIsVisible(true));
-  }, []);
+    requestAnimationFrame(() => setIsVisible(true))
+  }, [])
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused) return
 
-    const duration = toast.duration ?? 5000;
+    const duration = toast.duration ?? 5000
     const timer = setTimeout(() => {
-      setIsVisible(false);
-      setTimeout(() => onRemove(toast.id), 200);
-    }, duration);
+      setIsVisible(false)
+      setTimeout(() => onRemove(toast.id), 200)
+    }, duration)
 
-    return () => clearTimeout(timer);
-  }, [toast.id, toast.duration, onRemove, isPaused]);
+    return () => clearTimeout(timer)
+  }, [toast.id, toast.duration, onRemove, isPaused])
 
   const handleDismiss = () => {
-    setIsVisible(false);
-    setTimeout(() => onRemove(toast.id), 200);
-  };
+    setIsVisible(false)
+    setTimeout(() => onRemove(toast.id), 200)
+  }
 
   return (
     <div
@@ -94,7 +75,9 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-text-primary">{toast.title}</p>
         {toast.description && (
-          <p className="text-sm text-text-secondary mt-1">{toast.description}</p>
+          <p className="text-sm text-text-secondary mt-1">
+            {toast.description}
+          </p>
         )}
       </div>
       <button
@@ -104,37 +87,43 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
         <X className="w-4 h-4 text-text-secondary" />
       </button>
     </div>
-  );
+  )
 }
 
-function ToastContainer({ toasts, onRemove }: { toasts: Toast[]; onRemove: (id: string) => void }) {
+function ToastContainer({
+  toasts,
+  onRemove,
+}: {
+  toasts: Toast[]
+  onRemove: (id: string) => void
+}) {
   return (
     <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
       {toasts.map((toast) => (
         <ToastItem key={toast.id} toast={toast} onRemove={onRemove} />
       ))}
     </div>
-  );
+  )
 }
 
-export function ToastProvider({ children }: { children: React.ReactNode }) {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+function ToastProvider({ children }: { children: React.ReactNode }) {
+  const [toasts, setToasts] = useState<Toast[]>([])
 
   const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
-    const id = Math.random().toString(36).substring(2, 9);
-    setToasts((prev) => [...prev, { ...toast, id }].slice(-3));
-  }, []);
+    const id = Math.random().toString(36).substring(2, 9)
+    setToasts((prev) => [...prev, { ...toast, id }].slice(-3))
+  }, [])
 
   const removeToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  }, []);
+    setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }, [])
 
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
       {children}
       <ToastContainer toasts={toasts} onRemove={removeToast} />
     </ToastContext.Provider>
-  );
+  )
 }
 
-export type { Toast, ToastVariant };
+export default ToastProvider

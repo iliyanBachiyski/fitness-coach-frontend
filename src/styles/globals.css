@@ -3,30 +3,30 @@
 /* ===== THEME CONFIGURATION ===== */
 @theme {
   /* Brand Colors */
-  --color-primary: #00E676;
-  --color-primary-hover: #00C853;
-  --color-primary-muted: #00E67633;
+  --color-primary: #00e676;
+  --color-primary-hover: #00c853;
+  --color-primary-muted: #00e67633;
 
-  --color-secondary: #2979FF;
-  --color-secondary-hover: #2962FF;
-  --color-secondary-muted: #2979FF33;
+  --color-secondary: #2979ff;
+  --color-secondary-hover: #2962ff;
+  --color-secondary-muted: #2979ff33;
 
-  --color-warning: #FF3D00;
-  --color-warning-muted: #FF3D0033;
+  --color-warning: #ff3d00;
+  --color-warning-muted: #ff3d0033;
 
   /* Surface Colors */
   --color-background: #121212;
-  --color-surface: #1E1E1E;
+  --color-surface: #1e1e1e;
   --color-surface-hover: #252525;
 
   /* Text Colors */
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #B0BEC5;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b0bec5;
 
   /* Macro Colors */
-  --color-protein: #00E676;
-  --color-carbs: #2979FF;
-  --color-fat: #FFC107;
+  --color-protein: #00e676;
+  --color-carbs: #2979ff;
+  --color-fat: #ffc107;
 
   /* Font Families */
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -118,19 +118,18 @@
   }
 
   button:not(:disabled),
-  [role="button"]:not(:disabled) {
+  [role='button']:not(:disabled) {
     cursor: pointer;
   }
 
   button:disabled,
-  [role="button"]:disabled {
+  [role='button']:disabled {
     cursor: not-allowed;
   }
 }
 
 /* ===== COMPONENT STYLES ===== */
 @layer components {
-
   /* Glassmorphism Card */
   .glass-card {
     border-radius: var(--radius-card);
@@ -184,7 +183,9 @@
     color: var(--color-text-secondary);
     border-radius: var(--radius-button);
     padding: 0.75rem 1.5rem;
-    transition: color 0.2s, background-color 0.2s;
+    transition:
+      color 0.2s,
+      background-color 0.2s;
   }
 
   .btn-ghost:hover {
@@ -225,7 +226,9 @@
     padding: 0.75rem 1rem;
     border: 1px solid rgba(176, 190, 197, 0.3);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
   }
 
   .input-field::placeholder {
@@ -262,7 +265,9 @@
     border-radius: var(--radius-card);
     background-color: var(--color-surface);
     box-shadow: var(--shadow-card);
-    transition: box-shadow 0.2s, background-color 0.2s;
+    transition:
+      box-shadow 0.2s,
+      background-color 0.2s;
   }
 
   .card-default:hover {
@@ -384,10 +389,13 @@
 
 /* ===== UTILITY STYLES ===== */
 @layer utilities {
-
   /* Text gradient for special headings */
   .text-gradient-primary {
-    background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+    background: linear-gradient(
+      to right,
+      var(--color-secondary),
+      var(--color-primary)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -412,7 +420,6 @@
   }
 
   @keyframes borderPulse {
-
     0%,
     100% {
       border-color: rgba(41, 121, 255, 0.5);

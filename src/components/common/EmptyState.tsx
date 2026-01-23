@@ -1,12 +1,12 @@
-import type { LucideIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import type { LucideIcon } from 'lucide-react'
+import Button from '@/components/ui/button'
 
 interface EmptyStateProps {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  actionLabel?: string;
-  onAction?: () => void;
+  icon: LucideIcon
+  title: string
+  description: string
+  actionLabel?: string
+  onAction?: () => void
 }
 
 export function EmptyState({
@@ -27,5 +27,5 @@ export function EmptyState({
         <Button onClick={onAction}>{actionLabel}</Button>
       )}
     </div>
-  );
+  )
 }
