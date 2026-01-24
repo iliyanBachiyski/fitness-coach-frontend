@@ -1,9 +1,10 @@
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { PublicRoute } from '@/components/auth/PublicRoute'
 import ToastProvider from '@/components/ui/toast'
-import { HOME, LOGIN, THEME } from '@/constants/routes'
+import { HOME, LOGIN, SIGNUP, THEME } from '@/constants/routes'
 import { HomePage } from '@/pages/HomePage'
 import { LoginPage } from '@/pages/LoginPage'
+import { RegistrationPage } from '@/pages/RegistrationPage'
 import { ThemePage } from '@/pages/ThemePage'
 import { Navigate, Route, Routes } from 'react-router'
 
@@ -17,6 +18,7 @@ function App() {
           {/* Public routes - redirect to home if authenticated */}
           <Route element={<PublicRoute />}>
             <Route path={LOGIN} element={<LoginPage />} />
+            <Route path={SIGNUP} element={<RegistrationPage />} />
           </Route>
 
           {/* Protected routes - redirect to login if not authenticated */}
