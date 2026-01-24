@@ -1,3 +1,9 @@
+import {
+  PASSWORD_DIGIT_PATTERN,
+  PASSWORD_LOWERCASE_PATTERN,
+  PASSWORD_SPECIAL_CHAR_PATTERN,
+  PASSWORD_UPPERCASE_PATTERN,
+} from '@/constants/regex'
 import * as Yup from 'yup'
 
 export const registrationSchema = Yup.object().shape({
@@ -7,11 +13,20 @@ export const registrationSchema = Yup.object().shape({
   password: Yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters')
-    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-    .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-    .matches(/[0-9]/, 'Password must contain at least one number')
     .matches(
-      /[!@#$%^&*(),.?":{}|<>]/,
+      PASSWORD_UPPERCASE_PATTERN,
+      'Password must contain at least one uppercase letter'
+    )
+    .matches(
+      PASSWORD_LOWERCASE_PATTERN,
+      'Password must contain at least one lowercase letter'
+    )
+    .matches(
+      PASSWORD_DIGIT_PATTERN,
+      'Password must contain at least one number'
+    )
+    .matches(
+      PASSWORD_SPECIAL_CHAR_PATTERN,
       'Password must contain at least one special character'
     ),
   confirmPassword: Yup.string()
