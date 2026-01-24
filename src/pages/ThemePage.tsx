@@ -33,6 +33,7 @@ import { SetLoggerRow } from '@/components/workout-mode/SetLoggerRow'
 // Common Components
 import { EmptyState } from '@/components/common/EmptyState'
 import { SkeletonCard } from '@/components/common/SkeletonCard'
+import { HOME, THEME } from '@/constants/routes'
 
 function Section({
   title,
@@ -418,11 +419,11 @@ function CommonComponentsPage() {
 }
 
 const navItems = [
-  { to: '/theme/ui', label: 'UI' },
-  { to: '/theme/dashboard', label: 'Dashboard' },
-  { to: '/theme/nutrition', label: 'Nutrition' },
-  { to: '/theme/workout', label: 'Workout' },
-  { to: '/theme/common', label: 'Common' },
+  { to: `${THEME}/ui`, label: 'UI' },
+  { to: `${THEME}/dashboard`, label: 'Dashboard' },
+  { to: `${THEME}/nutrition`, label: 'Nutrition' },
+  { to: `${THEME}/workout`, label: 'Workout' },
+  { to: `${THEME}/common`, label: 'Common' },
 ]
 
 export function ThemePage() {
@@ -431,7 +432,7 @@ export function ThemePage() {
       <header className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl font-bold">Theme & Components</h1>
-          <NavLink to="/home">
+          <NavLink to={HOME}>
             <Button variant="ghost" size="sm">
               Back to Home
             </Button>
@@ -457,6 +458,7 @@ export function ThemePage() {
       </header>
 
       <main className="p-6">
+        {/* TODO: No need to add these routes in the routes config file */}
         <Routes>
           <Route index element={<Navigate to="ui" replace />} />
           <Route path="ui" element={<UIComponentsPage />} />
