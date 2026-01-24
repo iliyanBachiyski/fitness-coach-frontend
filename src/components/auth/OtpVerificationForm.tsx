@@ -1,7 +1,12 @@
 import Button from '@/components/ui/button'
+import {
+  EMAIL_MASK_PATTERN,
+  NON_DIGIT_GLOBAL_PATTERN,
+  SINGLE_DIGIT_PATTERN,
+} from '@/constants/regex'
 import { useCountdown } from '@/hooks/useCountdown'
-import { otpSchema } from '@/lib/validations/otpSchema'
 import { cn } from '@/lib/utils/cn'
+import { otpSchema } from '@/lib/validations/otpSchema'
 import { useFormik } from 'formik'
 import { useCallback, useRef, useState } from 'react'
 
@@ -45,7 +50,7 @@ export function OtpVerificationForm({
   const handleChange = useCallback(
     (index: number, value: string) => {
       // Only allow numeric input
-      if (value && !/^[0-9]$/.test(value)) return
+      if (value && !SINGLE_DIGIT_PATTERN.test(value)) return
 
       const newOtp = [...formik.values.otp]
       newOtp[index] = value
@@ -83,7 +88,9 @@ export function OtpVerificationForm({
     (e: React.ClipboardEvent) => {
       e.preventDefault()
       const pastedData = e.clipboardData.getData('text').trim()
-      const digits = pastedData.replace(/\D/g, '').slice(0, 6)
+      const digits = pastedData
+        .replace(NON_DIGIT_GLOBAL_PATTERN, '')
+        .slice(0, 6)
 
       if (digits) {
         const newOtp = [...formik.values.otp]
@@ -115,7 +122,7 @@ export function OtpVerificationForm({
   }, [isComplete, reset, formik])
 
   const maskedEmail = email.replace(
-    /(.{2})(.*)(@.*)/,
+    EMAIL_MASK_PATTERN,
     (_, start, middle, end) => start + '*'.repeat(middle.length) + end
   )
 

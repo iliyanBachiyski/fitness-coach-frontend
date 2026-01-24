@@ -1,13 +1,25 @@
+import {
+  PASSWORD_DIGIT_PATTERN,
+  PASSWORD_LOWERCASE_PATTERN,
+  PASSWORD_SPECIAL_CHAR_PATTERN,
+  PASSWORD_UPPERCASE_PATTERN,
+} from '@/constants/regex'
 import type { PasswordStrength } from '@/types/registration'
 import { useMemo } from 'react'
 
 const PASSWORD_CRITERIA = [
   { test: (pwd: string) => pwd.length >= 8, label: 'At least 8 characters' },
-  { test: (pwd: string) => /[A-Z]/.test(pwd), label: 'Uppercase letter' },
-  { test: (pwd: string) => /[a-z]/.test(pwd), label: 'Lowercase letter' },
-  { test: (pwd: string) => /[0-9]/.test(pwd), label: 'Number' },
   {
-    test: (pwd: string) => /[!@#$%^&*(),.?":{}|<>]/.test(pwd),
+    test: (pwd: string) => PASSWORD_UPPERCASE_PATTERN.test(pwd),
+    label: 'Uppercase letter',
+  },
+  {
+    test: (pwd: string) => PASSWORD_LOWERCASE_PATTERN.test(pwd),
+    label: 'Lowercase letter',
+  },
+  { test: (pwd: string) => PASSWORD_DIGIT_PATTERN.test(pwd), label: 'Number' },
+  {
+    test: (pwd: string) => PASSWORD_SPECIAL_CHAR_PATTERN.test(pwd),
     label: 'Special character',
   },
 ]
