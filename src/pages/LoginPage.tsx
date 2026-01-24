@@ -1,14 +1,14 @@
 import { AnimatedLogo } from '@/components/auth/AnimatedLogo'
 import { LoginForm } from '@/components/auth/LoginForm'
+import { FORGOT_PASSWORD, SIGNUP } from '@/constants/routes'
 import { SocialLoginButton } from '@/components/auth/SocialLoginButton'
 import { GlassCard } from '@/components/ui/glass-card'
-import { FORGOT_PASSWORD, SIGNUP } from '@/constants/routes'
 import { Link } from 'react-router'
 
 export function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <GlassCard className="w-full max-w-md p-8 space-y-6">
+      <GlassCard variant="elevated" className="w-full max-w-md p-8 space-y-6">
         <AnimatedLogo />
 
         <LoginForm />
