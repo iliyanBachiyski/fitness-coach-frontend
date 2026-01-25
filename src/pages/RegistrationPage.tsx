@@ -1,7 +1,7 @@
-import { AnimatedLogo } from '@/components/auth/AnimatedLogo'
 import { OtpVerificationForm } from '@/components/auth/OtpVerificationForm'
 import { RegistrationForm } from '@/components/auth/RegistrationForm'
 import { SocialLoginButton } from '@/components/auth/SocialLoginButton'
+import { WithBackgroundLogo } from '@/components/common/WithBackgroundLogo'
 import { GlassCard } from '@/components/ui/glass-card'
 import { LOGIN } from '@/constants/routes'
 import { useToast } from '@/hooks/useToast'
@@ -34,7 +34,9 @@ export function RegistrationPage() {
       <GlassCard variant="elevated" className="w-full max-w-md p-8 space-y-6">
         {step === 'form' ? (
           <>
-            <AnimatedLogo />
+            <div className="flex justify-center">
+              <WithBackgroundLogo variant="selected" size="lg" />
+            </div>
 
             <RegistrationForm onSuccess={handleRegistrationSuccess} />
 
