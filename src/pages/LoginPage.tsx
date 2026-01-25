@@ -1,4 +1,4 @@
-import { AnimatedLogo } from '@/components/auth/AnimatedLogo'
+import { WithBackgroundLogo } from '@/components/common/WithBackgroundLogo'
 import { LoginForm } from '@/components/auth/LoginForm'
 import { FORGOT_PASSWORD, SIGNUP } from '@/constants/routes'
 import { SocialLoginButton } from '@/components/auth/SocialLoginButton'
@@ -9,7 +9,9 @@ export function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <GlassCard variant="elevated" className="w-full max-w-md p-8 space-y-6">
-        <AnimatedLogo />
+        <div className="flex justify-center">
+          <WithBackgroundLogo variant="selected" size="lg" />
+        </div>
 
         <LoginForm />
 

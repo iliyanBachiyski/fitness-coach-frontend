@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils/cn'
 
-interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   variant?: 'default' | 'elevated' | 'selected'
 }

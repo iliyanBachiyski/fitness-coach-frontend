@@ -34,6 +34,8 @@ import { SetLoggerRow } from '@/components/workout-mode/SetLoggerRow'
 import { EmptyState } from '@/components/common/EmptyState'
 import { SkeletonCard } from '@/components/common/SkeletonCard'
 import { HOME, THEME } from '@/constants/routes'
+import { Logo } from '@/components/common/Logo'
+import { WithBackgroundLogo } from '@/components/common/WithBackgroundLogo'
 
 function Section({
   title,
@@ -398,6 +400,24 @@ function WorkoutModeComponentsPage() {
 function CommonComponentsPage() {
   return (
     <div className="space-y-8">
+      <Section title="Logo">
+        <div className="flex flex-row space-y-4 max-w-md">
+          <Logo />
+          <Logo animated />
+          <Logo text="Pulse Fit App" />
+        </div>
+      </Section>
+
+      <Section title="With Background Logo">
+        <div className="flex flex-row gap-3">
+          <WithBackgroundLogo variant="elevated" size="xs" />
+          <WithBackgroundLogo variant="elevated" size="sm" />
+          <WithBackgroundLogo variant="elevated" />
+          <WithBackgroundLogo variant="selected" />
+          <WithBackgroundLogo variant="elevated" size="lg" />
+        </div>
+      </Section>
+
       <Section title="SkeletonCard">
         <div className="space-y-4 max-w-md">
           <SkeletonCard />
