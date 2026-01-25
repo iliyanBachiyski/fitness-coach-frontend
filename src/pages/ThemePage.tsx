@@ -415,6 +415,7 @@ function CommonComponentsPage() {
           <WithBackgroundLogo variant="elevated" />
           <WithBackgroundLogo variant="selected" />
           <WithBackgroundLogo variant="elevated" size="lg" />
+          <WithBackgroundLogo variant="elevated" size="xl" />
         </div>
       </Section>
 
