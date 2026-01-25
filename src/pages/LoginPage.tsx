@@ -10,7 +10,7 @@ export function LoginPage() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <GlassCard variant="elevated" className="w-full max-w-md p-8 space-y-6">
         <div className="flex justify-center">
-          <WithBackgroundLogo variant="selected" size="lg" />
+          <WithBackgroundLogo variant="selected" size="xl" />
         </div>
 
         <LoginForm />

@@ -35,7 +35,7 @@ export function RegistrationPage() {
         {step === 'form' ? (
           <>
             <div className="flex justify-center">
-              <WithBackgroundLogo variant="selected" size="lg" />
+              <WithBackgroundLogo variant="selected" size="xl" />
             </div>
 
             <RegistrationForm onSuccess={handleRegistrationSuccess} />

@@ -11,10 +11,10 @@ export function Logo({ animated, text, width = 80 }: LogoProps) {
     <div className="flex flex-col items-center justify-center gap-2">
       {animated ? (
         <div className="animate-pulse-slow">
-          <img src={LogoImage} width={width} />
+          <img src={LogoImage} width={width} className="rotate-135" />
         </div>
       ) : (
-        <img src={LogoImage} width={width} />
+        <img src={LogoImage} width={width} className="rotate-135" />
       )}
       {!!text && <h1 className="text-h1 font-bold">{text}</h1>}
     </div>

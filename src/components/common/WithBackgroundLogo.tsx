@@ -3,15 +3,16 @@ import { Logo } from './Logo'
 
 interface WithBackgroundLogoProps {
   variant?: GlassCardProps['variant']
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
-const getSizeDimensions = (size: 'xs' | 'sm' | 'md' | 'lg') => {
+const getSizeDimensions = (size: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => {
   const dimensions = {
     xs: { width: 40, height: 40 },
     sm: { width: 48, height: 48 },
     md: { width: 60, height: 60 },
     lg: { width: 80, height: 80 },
+    xl: { width: 100, height: 100 },
   }
   return dimensions[size]
 }
@@ -31,7 +32,7 @@ export function WithBackgroundLogo({
         height,
       }}
     >
-      <Logo width={width - 8} />
+      <Logo width={width} />
     </GlassCard>
   )
 }
